@@ -1,9 +1,11 @@
 package org.jdk8;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class JKD8Feature {
@@ -25,6 +27,23 @@ public class JKD8Feature {
 
 			System.out.println(" ======================================== ");
 		le.stream().filter(s ->s.getSalary() >350).forEach(System.out::println);
+		
+		
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("A3", 9);
+		map.put("A5", 4);
+		map.put("A8", 5);
+		map.put("A2", 6);
+		map.put("A9", 8);
+		map.put("A1", 7);
+		
+		Map<String,Integer> result = map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(oldvalue,newvalue) -> oldvalue,
+						LinkedHashMap::new));
+	
+		
+		result.forEach((k,v) -> System.out.println("Key = "+ k + ", Value = " + v));
+	
 	}
 }
 class Employee {
