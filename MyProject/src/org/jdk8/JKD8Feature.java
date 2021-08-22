@@ -22,10 +22,10 @@ public class JKD8Feature {
 		l.forEach(x -> System.out.println(x) );
 	*/
 		List<Employee> le = new ArrayList<Employee>();
-		le.add(new Employee(300)); le.add(new Employee(783));le.add(new Employee(349));le.add(new Employee(366));
-		le.add(new Employee(420));
+		le.add(new Employee(300,"abc")); le.add(new Employee(783,"bca"));le.add(new Employee(349,"bca"));le.add(new Employee(366,"bca"));
+		le.add(new Employee(420,"tba"));
 
-			System.out.println(" ======================================== ");
+		System.out.println(" ======================================== ");
 		le.stream().filter(s ->s.getSalary() >350).forEach(System.out::println);
 		
 		
@@ -48,9 +48,18 @@ public class JKD8Feature {
 }
 class Employee {
 	int salary;
+	String name;
+	public String getName() {
+		return name;
+	}
 
-	public Employee(int i) {
-		salary =i;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Employee(int i,String name) {
+		this.salary =i;
+		this.name = name;
 	}
 
 	public int getSalary() {
