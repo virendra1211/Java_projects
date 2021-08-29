@@ -11,7 +11,7 @@ public class StringPractice {
 		System.out.println("isPalidrome(abba) "+isPalidrome("abba"));
 		
 		System.out.println("==================");
-		System.out.println(decode("raj"));
+		//System.out.println(decode("raj"));
 	}
 	public static String decode(String code) {
 		String decoded = "";

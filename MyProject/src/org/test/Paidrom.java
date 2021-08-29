@@ -2,7 +2,7 @@ package org.test;
 
 public class Paidrom {
 	public static void main(String[] args) {
-	int num = 125;
+	int num = 121;
 	if(num == reverseOrder(num)) {
 			System.out.println("palidrom");
 		}else {
