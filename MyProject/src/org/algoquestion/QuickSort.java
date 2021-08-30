@@ -1,7 +1,7 @@
 package org.algoquestion;
 
 /*
- * 	Thre option
+ * 	There option
 	to choose
 	pivot element are:-
 	left or
@@ -29,9 +29,11 @@ public class QuickSort {
 	void quickSortRecursion(int[] arr, int low, int high) {
 
 		int pi = partition(arr, low, high);
+		// left side array
 		if (low < pi - 1) {
 			quickSortRecursion(arr, low, pi - 1);
 		}
+		// right side array
 		if (pi < high) {
 			quickSortRecursion(arr, pi, high);
 		}

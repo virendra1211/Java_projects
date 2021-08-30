@@ -9,7 +9,7 @@ public class CompletableFutureExample{
 		Thread t3 = new Thread(() -> System.out.print("a"));
 
 //		CompletableFuture<String> future = 
-		  CompletableFuture.supplyAsync(() -> t1).thenApply()
+		//  CompletableFuture.supplyAsync(() -> t1).thenApply());
 	}
 }
 

@@ -16,8 +16,6 @@ public class EmployeeSecondsalary {
 		Optional<Employee1> emp = list.stream()
 		        .sorted(Comparator.comparingDouble(Employee1::getSalary).reversed()).skip(12).findFirst();
 		
-		
-
 		System.out.println("--------- "+emp.get().getSalary());
 	//	List<Employee1> sortedList = 
 				list.stream().sorted(Comparator.comparingInt(Employee1::getSalary)).forEach( (a) -> System.out.println(a.getSalary()));
