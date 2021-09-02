@@ -6,7 +6,7 @@ import java.util.Map;
 public class Snippet {
 	
 	public static void main(String[] args) {
-		String s[] = {"ADD:i","SIZE:J","c","d"};
+		String s[] = {"ADD:i","SIZE:j"};
 		System.out.println(solution(s));
 	}
 	
@@ -25,12 +25,13 @@ public class Snippet {
 	
 			for (int i = 0; i < A.length; i++) {
 				tokens = A[i].split(":");
-				switch (tokens[0]) {
+				System.out.println(tokens.toString());
+				switch (tokens[1]) {
 				case ADD:
-					map.put(tokens[1], tokens[2]);
+					map.put(tokens[0], tokens[1]);
 					break;
 				case PRINT:
-					if (map.containsKey(tokens[1])) {
+					if (map.containsKey(tokens[0])) {
 						sb.append(map.get(tokens[1]));
 					} else {
 						sb.append("-1");

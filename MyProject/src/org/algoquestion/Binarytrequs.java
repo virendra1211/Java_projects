@@ -2,10 +2,19 @@ package org.algoquestion;
 
 import javax.swing.tree.TreeNode;
 
-
+class A{
+	public static void m() {
+		System.out.println("static method");
+	}
+}
 public class Binarytrequs {
 	public static void main(String[] args) {
-		
+		A a2 = null;
+		a2.m();
+			A a1 = new A() ;
+			if(a1 instanceof A) {
+				System.out.println("AA");
+			}
 	}
 	
 	public boolean iStrictTree(TreeNode node) {

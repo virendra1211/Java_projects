@@ -1,5 +1,12 @@
 package org.test;
 
+/*
+	ThreadLocal class enables you to create variables that can only be 
+	read and written by the same thread.
+	Thus, even if two threads are executing the same code, and the code has a reference
+	to the same ThreadLocal variable, 
+	the two threads cannot see each other's ThreadLocal variables.
+ */
 public class ThreadLocalExp {
 	public static class MyRunnable implements Runnable {
 		private ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();

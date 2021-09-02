@@ -22,7 +22,6 @@ public class StringPermutation {
 			String rpart = str.substring(i + 1);
 			String ros = lpart + rpart;
 			// Recurvise call
-			System.out.println("---- "+ans+ch);
 			printPermutn(ros, ans + ch);
 		}
 	}
