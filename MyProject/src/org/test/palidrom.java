@@ -1,6 +1,6 @@
 package org.test;
 
-public class Paidrom {
+public class palidrom {
 	public static void main(String[] args) {
 	int num = 121;
 	if(num == reverseOrder(num)) {
