@@ -8,7 +8,7 @@ public class StringPermutation {
 	{
 		// If string is empty
 		if (str.length() == 0) {
-			System.out.print(ans + " ");
+			System.out.println(ans + " ");
 			return;
 		}
 
@@ -22,6 +22,7 @@ public class StringPermutation {
 			String rpart = str.substring(i + 1);
 			String ros = lpart + rpart;
 			// Recurvise call
+			//System.out.println(str+"++"+i+"  "+ch+"--"+ros +"---"+ans+ch+" -- ");
 			printPermutn(ros, ans + ch);
 		}
 	}
@@ -29,7 +30,7 @@ public class StringPermutation {
 	// Driver code
 	public static void main(String[] args)
 	{
-		String s = "abc";
+		String s = "abcd";
 		printPermutn(s, "");
 	}
 }

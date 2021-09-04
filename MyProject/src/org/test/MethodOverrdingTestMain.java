@@ -12,7 +12,7 @@ As exception thrown by overridden method can not be more restrictive, it will re
 */
 public class MethodOverrdingTestMain {
 	public static void main(String[] args) {
-		B b = new B();
+		B11 b = new B11();
 		try {
 			b.method();
 		} catch (Exception e) {
@@ -22,14 +22,14 @@ public class MethodOverrdingTestMain {
 
 }
 
-class A {
+class A11 {
 
 	public void method() throws IOException {
 
 	}
 }
 
-class B extends A {
+class B11 extends A11 {
 
 	public void method() throws Exception {
 
