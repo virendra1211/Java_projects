@@ -1,5 +1,10 @@
 package org.thread;
-
+/*
+ May be the question like , suppose I want to give a way that other thread see the same value then what should I do.?? 
+ below answer
+	Now all threads will see the same initial value when calling get() before having called set() .
+	can be use if multiple thread is belongs to different location or to create session in hiberante 
+ */
 public class ThreadLocalTest {
 	public static void main(String[] args) throws InterruptedException {
 	        MyRunnable sharedRunnableInstance = new MyRunnable();
