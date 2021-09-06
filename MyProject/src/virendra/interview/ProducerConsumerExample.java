@@ -4,7 +4,7 @@ package virendra.interview;
 
 import java.util.LinkedList;
 
-public class Threadexample {
+public class ProducerConsumerExample {
 	public static void main(String[] args)
 		throws InterruptedException
 	{
@@ -49,8 +49,8 @@ public class Threadexample {
 		t2.start();
 
 		// t1 finishes before t2
-		t1.join();
-		t2.join();
+		//t1.join();
+		//t2.join();
 	}
 
 	// This class has a list, producer (adds items to list
