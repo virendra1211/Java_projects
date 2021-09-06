@@ -26,6 +26,7 @@ public class ThreadLocalTest {
 		        return "This is the initial value";
 		    }
 		};  
+		
 
 		@Override
 		public void run() {

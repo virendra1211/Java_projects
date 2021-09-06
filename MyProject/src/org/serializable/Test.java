@@ -20,6 +20,8 @@ class A implements Serializable {
 
 public class Test {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		
+		
 		A a = new A(20, "GeeksForGeeks");
 
 		// Serializing 'a'
