@@ -14,7 +14,7 @@ public class StackUsingQueue<E> {
 	
 	public static void main(String[] args) {
 		StackUsingQueue<String> stack = new StackUsingQueue<>();
-		stack.push("Sachin"); stack.push("Rane"); stack.push("Pune"); 
+		stack.push("A"); stack.push("B"); stack.push("C"); stack.push("D"); 
 		System.out.println("first element of stack : " + stack.pop());
 		System.out.println("Second element of stack : " + stack.pop());
 		//FIFO: 1 ,2 ,3 ,4 -> ou

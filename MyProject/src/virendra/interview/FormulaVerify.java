@@ -8,7 +8,8 @@ import java.util.List;
 public class FormulaVerify {
 	
 	public static void main(String[] args) {
-		String str= "[{}{()}]";
+		//String str= "[{}}{()}]";
+		String str= "{{level 1 { sub} {sub2}}";
 		if(isValidate(str)) {
 			System.out.println("Formula is correct");
 		}else {
@@ -18,22 +19,32 @@ public class FormulaVerify {
 	
 	
 	private static boolean isValidate(String str) {
-		Deque<Character> queue = new ArrayDeque<>();
+		Deque<Character> deque = new ArrayDeque<>();
 		List<String> list = new ArrayList<String>();
 		for(int i=0;i<str.length();i++) {
-			Character x = str.charAt(i);
-			if (x == '(' || x == '[' || x == '{')
+			Character ch = str.charAt(i);
+			if (ch == '(' || ch == '[' || ch == '{')
             {
-				queue.push(x);
+				deque.push(ch);
 				//list.add(x.toString());
+            }else {
+            	  if (!deque.isEmpty()
+            	            && ((deque.peekFirst() == '{' && ch == '}')
+            	            || (deque.peekFirst() == '[' && ch == ']')
+            	            || (deque.peekFirst() == '(' && ch == ')'))) {
+            	            deque.removeFirst();
+            	        } else {
+            	            return false;
+            	        }
             }
-			if (x == ')' || x == ']' || x == '}')
-            {
-            	queue.pop();
-				//list.remove(list.size()-1);
-            }
+			/*
+			 * if (x == ')' || x == ']' || x == '}') {
+			 * System.out.println("****** count** "+queue.size());
+			 * 
+			 * //queue.pop(); //list.remove(list.size()-1); }
+			 */
 		}
-		if(queue.size() ==0) {
+		if(deque.size() ==0) {
 		//if(list.size() ==0) {
 			return true;
 		}

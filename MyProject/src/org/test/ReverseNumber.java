@@ -8,15 +8,11 @@ public class ReverseNumber {
 			int remainder = number % 10;
 			reversenum = reversenum*10 + remainder;
 			number = number/10;
-			
 		}
 		
 		System.out.println(reversenum);
 		
-		
-		
 	}
-	
 	
 
 }

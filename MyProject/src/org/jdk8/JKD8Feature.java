@@ -49,6 +49,31 @@ public class JKD8Feature {
 class Employee {
 	int salary;
 	String name;
+	String lname;
+	int id;
+	
+	public Employee(int id, String name, String lname) {
+		this.name = name;
+		this.lname = lname;
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -73,6 +98,6 @@ class Employee {
 	  @Override
 	    public String toString() {
 	 
-	        return " | salary: "+this.salary;
+	        return this.id +" | "+this.name+" | "+this.lname;
 	    }
 }

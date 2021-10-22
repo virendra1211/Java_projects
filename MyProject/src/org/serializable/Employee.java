@@ -10,7 +10,19 @@ public class Employee implements Serializable {
 	private Double salary;
 	private double ids;
 	private static int myid=5001;
-	
+	private String lname;
+	public double getIds() {
+		return ids;
+	}
+	public void setIds(double ids) {
+		this.ids = ids;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
 	/*
 		if student is not serialized then will get java.io.NotSerializableException: while deserializing or serializing the object
 	 */
@@ -33,6 +45,21 @@ public class Employee implements Serializable {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Employee(int id, String name, String email, Double salary, double ids, Student stu) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.salary = salary;
+		this.ids = ids;
+		this.stu = stu;
+	}
+	
+	public Employee(int id,String name, String lname) {
+		this.id = id;
+		this.name = name;
+		this.lname = lname;
 	}
 	public String getName() {
 		return name;
