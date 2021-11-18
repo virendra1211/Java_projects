@@ -33,6 +33,12 @@ public class HashMapByValueSort {
 		  reverseOrder())).collect(Collectors .toMap(Map.Entry::getKey,
 		  Map.Entry::getValue, (oldvalue, newvalue) -> oldvalue, LinkedHashMap::new));
 		 	
-		//System.out.println(sortedMap);
+		  
+		  map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.
+		  reverseOrder())).collect(Collectors.toMap(Map.Entry::getKey, 
+		  Map.Entry::getValue, (o,n) ->  o,LinkedHashMap::new));
+		  //System.out.println(sortedMap);
+
+	
 	}
 }

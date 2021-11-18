@@ -12,8 +12,17 @@ public class EmployeeSecondsalary {
 		list.add(new Employee1("a3",652));
 		list.add(new Employee1("a6",522));
 		list.add(new Employee1("a2",512));
+	
+		
+		Optional<Employee1> ss = list.stream().
+				sorted(Comparator.comparingDouble(Employee1::getSalary).reversed()).skip(1).findFirst();
+		
+		
+		
+		
 		Optional<Employee1> emp = list.stream()
-		        .sorted(Comparator.comparingDouble(Employee1::getSalary).reversed()).skip(12).findFirst();
+		        .sorted(Comparator.comparingDouble(Employee1::getSalary).reversed()).skip(1).findFirst();
+		
 		
 		System.out.println("--------- "+emp.get().getSalary());
 	//	List<Employee1> sortedList = 
@@ -23,7 +32,7 @@ public class EmployeeSecondsalary {
 	}
 }
 class Employee1 {
-	
+
 	public Employee1(String name, int salary) {
 		this.name = name;
 		this.salary = salary;

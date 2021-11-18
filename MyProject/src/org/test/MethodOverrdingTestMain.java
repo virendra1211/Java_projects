@@ -1,5 +1,6 @@
 package org.test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /*
@@ -24,14 +25,14 @@ public class MethodOverrdingTestMain {
 
 class A11 {
 
-	public void method() throws IOException {
+	public void method() throws IOException{
 
 	}
 }
 
 class B11 extends A11 {
 
-	public void method() throws Exception {
+	public void method() throws FileNotFoundException  {
 
 	}
 }
