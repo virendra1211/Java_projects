@@ -9,6 +9,7 @@ public class FormulaVerify {
 	
 	public static void main(String[] args) {
 		String str= "[{}{()}]";
+		str  = "(9*8)+(1-2)-[7/2]";
 		//String str= "{{level 1 { sub} {sub2}}}";
 		if(isValidate(str)) {
 			System.out.println("Formula is correct");
