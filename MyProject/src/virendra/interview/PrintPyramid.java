@@ -14,9 +14,9 @@ public class PrintPyramid {
 			}
 			int c=1;
 			for(int p=0;p<count;p++) {
-				System.out.print(count +" ");
+				//System.out.print(count +" ");
 				// other way start 
-				//System.out.print(c++ +" ");
+				System.out.print(c++ +" ");
 				//System.out.print("* ");
 				// other way end
 			}

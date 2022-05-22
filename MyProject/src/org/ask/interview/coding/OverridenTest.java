@@ -20,7 +20,7 @@ public class OverridenTest {
 }
 
 class A1 {
-	 A2 m1(String... s) throws Exception {
+	 A1 m1(String... s) throws Exception {
 		return null;
 	}
 	

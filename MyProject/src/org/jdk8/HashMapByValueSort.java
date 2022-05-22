@@ -20,18 +20,24 @@ public class HashMapByValueSort {
 		map.put("g", 350);
 
 		List<Map.Entry<String, Integer>> sortedList = new ArrayList<Map.Entry<String,Integer>>(map.entrySet());
+
+		/** I way **/
+		Map<String, Integer> sortedMapWithValue = map.entrySet().stream()
+				.sorted((p1, p2) -> p1.getValue().compareTo(p2.getValue()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(o,n) ->o,LinkedHashMap::new));
+		System.out.println("sortedMapWithValue " + sortedMapWithValue);
 		
+		/** II way **/
 		Collections.sort(sortedList,(p1,p2) -> p1.getValue().compareTo(p2.getValue()));
 		
 		sortedList.forEach(System.out::println);
 		System.out.println(map);
 		System.out.println(" ========================== ");
-	
-		
-		  Map<String,Integer> sortedMap =
-		  map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.
-		  reverseOrder())).collect(Collectors .toMap(Map.Entry::getKey,
-		  Map.Entry::getValue, (oldvalue, newvalue) -> oldvalue, LinkedHashMap::new));
+
+		/** III way **/
+		Map<String, Integer> sortedMap = map.entrySet().stream()
+				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toMap(
+						Map.Entry::getKey, Map.Entry::getValue, (oldvalue, newvalue) -> oldvalue, LinkedHashMap::new));
 		 	
 		  
 		  map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.

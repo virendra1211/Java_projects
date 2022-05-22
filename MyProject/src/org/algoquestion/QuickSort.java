@@ -20,7 +20,7 @@ public class QuickSort {
 	public static void main(String[] args) {
 		QuickSort qs = new QuickSort();
 
-		int [] arr = {15,9,7,13,12,16,4,18,11};
+		int [] arr = {15,12,7,13,12,16,4,18,11};
 		int leng = arr.length;
 		qs.quickSortRecursion(arr,0,leng-1);
 		qs.display(arr);

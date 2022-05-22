@@ -12,7 +12,12 @@ public class CompareTwoString {
 			System.out.println("No match has found");
 
 		}
-	
+	int count=0;
+	int count1 =0;
+	System.out.println(count++);
+	System.out.println(++count1);
+	System.out.println(count++);
+	System.out.println(++count1); 
 	}
 	public static boolean isValid(String s1, String s2) {
 		

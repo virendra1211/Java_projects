@@ -5,13 +5,13 @@ import java.util.Iterator;
 
 /**
  * 
- * @author Virendra khade How to create Immutable class in Java 1. Declare the
- *         class is final so can't be extended 2. make all field private so that
- *         direct access is not allowed 3. don't provide setter methods for
- *         variable 4. Make all mutable fields Final so that it's value can be
- *         assigned only once. 5. Initialize all the field via constructor
- *         performing deep copy 6. perform clonning of object in the getter
- *         methods to return a copy rather than returning the actual object
+ * @author Virendra khade How to create Immutable class in Java 
+ * 	1. Declare the class is final so can't be extended 
+ * 	2. make all field private so that direct access is not allowed 
+ *  3. don't provide setter methods for variable 
+ *  4. Make all mutable fields Final so that it's value can be assigned only once. 
+ *  5. Initialize all the field via constructor performing deep copy 
+ *  6. perform cloning of object in the getter methods to return a copy rather than returning the actual object
  */
 public class ImmutableClass {
 

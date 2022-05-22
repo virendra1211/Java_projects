@@ -30,7 +30,7 @@ public class StringPermutation {
 	// Driver code
 	public static void main(String[] args)
 	{
-		String s = "abcd";
+		String s = "GODE";
 		printPermutn(s, "");
 	}
 }
