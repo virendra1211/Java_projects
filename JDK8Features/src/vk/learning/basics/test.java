@@ -11,7 +11,9 @@ import java.util.regex.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
-
+enum p{
+	private int s;
+}
 class Result {
 
 	/*
@@ -64,4 +66,3 @@ class Result {
 
 }
 
-public class Solution {

@@ -8,31 +8,29 @@ class IncTo100Demo implements Runnable {
     public volatile int count = 1;
 
     public void run() {
-        Thread current = Thread.currentThread();
-        try {
-            while(count < 21) {
-                System.out.println(current.getName() + " count = " + count++);
-                current.sleep(1000);
-            }
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
+	Thread current = Thread.currentThread();
+	try {
+	    while (count < 21) {
+		System.out.println(current.getName() + " count = " + count++);
+		current.sleep(1000);
+	    }
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
     }
 
     public static void main(String[] args) {
-    	IncTo100Demo instance = new IncTo100Demo();
-        Thread one = new Thread(instance , "one");
-        Thread two = new Thread(instance, "two");
+	IncTo100Demo instance = new IncTo100Demo();
+	Thread one = new Thread(instance, "one");
+	Thread two = new Thread(instance, "two");
 
-        try {
-            one.start();
-            two.start();
-            System.out.println("one alive? " + one.isAlive());
-            one.join();
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
+	try {
+	    one.start();
+	    two.start();
+	    System.out.println("one alive? " + one.isAlive());
+	    one.join();
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
     }
-}  
+}

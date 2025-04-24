@@ -1,6 +1,7 @@
 package virendra.interview;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -31,9 +32,10 @@ public class Test {
 			+ ")";
 
 	public static void main(String[] args) {
-		
+		int a[] = {1 , 3,5,6};
+		int b[] = {6,7,9};
+
 		String[] nodes = treeString.split("\n");
-		
 		
 		// Trim off whitespaces on all elements
 		System.out.println("*************");

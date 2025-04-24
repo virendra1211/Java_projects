@@ -32,6 +32,7 @@ public class ArmstsrongNumberExample {
 			return false;
 	}
 
+
 //driver code  
 	public static void main(String args[]) {
 		int num;
@@ -39,6 +40,7 @@ public class ArmstsrongNumberExample {
 		System.out.print("Enter the limit: ");
 //reads the limit from the user  
 		num = sc.nextInt();
+		isArmstrong(153);
 		System.out.println("Armstrong Number up to " + num + " are: ");
 		for (int i = 0; i <= num; i++)
 //function calling  

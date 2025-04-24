@@ -1,7 +1,8 @@
 package org.serializable;
 import java.io.Serializable;
+import java.util.Objects;
 
-public class Employee implements Serializable {
+public class Employee implements Serializable,Comparable<Employee> {
 
 	private static final long serialVersionUID = -179812851346930637L;
 	private int id;
@@ -55,7 +56,22 @@ public class Employee implements Serializable {
 		this.ids = ids;
 		this.stu = stu;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, lname);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return id == other.id && Objects.equals(lname, other.lname);
+	}
 	public Employee(int id,String name, String lname) {
 		this.id = id;
 		this.name = name;
@@ -81,5 +97,15 @@ public class Employee implements Serializable {
 	}
 	Employee(){
 		
+	}
+	@Override
+	public int compareTo(Employee o) {
+		if(id > o.getId()) {
+			return 1;
+		}else if(id < o.getId()){
+			return -1;
+		}else {
+			return 0; 
+		}
 	}
 }
