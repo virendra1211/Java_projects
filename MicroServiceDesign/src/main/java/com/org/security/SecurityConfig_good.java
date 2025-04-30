@@ -14,24 +14,26 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig_good {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	http.csrf().disable().authorizeHttpRequests().requestMatchers("/auth/**").permitAll()
-		.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated().and()
-		.addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
-	
-	return http.build();
-    }
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http.csrf(csrf -> csrf.disable()) // 1
+				.authorizeHttpRequests(auth -> auth // 2
+						.requestMatchers("/auth/**").permitAll() // 3
+						.requestMatchers("/admin/**").hasRole("ADMIN") // 4
+						.anyRequest().authenticated()// 5
+				).sessionManagement(
+						session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 6
+				).addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class); // 7
+		return http.build();
+	}
 
-    @Bean
-    public JWTAuthFilter jwtAuthFilter() {
-	return new JWTAuthFilter(); // Custom filter below
-    }
+	@Bean
+	public JWTAuthFilter jwtAuthFilter() {
+		return new JWTAuthFilter(); // Custom filter below
+	}
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-	return new BCryptPasswordEncoder();
-    }
+	@Bean // 8
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
-
-http.sessionManagement().disable()}
