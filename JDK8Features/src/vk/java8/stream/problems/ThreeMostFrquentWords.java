@@ -3,6 +3,7 @@ package vk.java8.stream.problems;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ThreeMostFrquentWords {
@@ -23,6 +24,11 @@ public class ThreeMostFrquentWords {
 
 		top3.forEach(entry -> System.out
 				.println("Word: " + entry.getKey() + ", Count: " + entry.getValue()));
+
+		int p[] = { 3, 5, 6, 3, 7, 8, 9, 2, 3, 6, 9, 10 };
+		Map<Integer, Long> result = Arrays.stream(p).boxed()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		System.out.println(result);
 	}
 
 }

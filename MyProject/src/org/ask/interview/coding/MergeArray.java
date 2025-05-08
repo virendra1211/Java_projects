@@ -11,50 +11,52 @@ import java.util.Arrays;
  */
 public class MergeArray {
 
-    public static void main(String[] args) {
-	int[] A = { 1, 4, 7, 19, 23 };
-	int[] B = { 2, 7, 16, 51, 67 };
+	public static void main(String[] args) {
+		int[] A = { 1, 4, 7, 19, 23 };
+		int[] B = { 2, 7, 16, 51, 67 };
+		/*
+		 * int[] A = { 1, 2, 3, 0, 0, 0 }; int[] B = { 2, 5, 6 };
+		 */
 
-	int[] result = mergeArrays(A, B);
-	System.out.println(Arrays.toString(result));
+		int[] result = mergeArrays(A, B);
+		System.out.println(Arrays.toString(result));
 
-    }
+	}
 
-    private static int[] mergeArrays(int[] a, int[] b) {
-	int[] result = new int[a.length + b.length];
+	private static int[] mergeArrays(int[] a, int[] b) {
+		int[] result = new int[a.length + b.length];
+		int cursor = 0;
 
-	int cursor = 0;
+		int arrayAIndex = 0;
+		int arrayBIndex = 0;
+		while (arrayAIndex < a.length && arrayBIndex < b.length) {
 
-	int arrayAIndex = 0;
-	int arrayBIndex = 0;
-	while (arrayAIndex < a.length && arrayBIndex < b.length) {
+			if (a[arrayAIndex] <= b[arrayBIndex]) {
+				if (a[arrayAIndex] == b[arrayBIndex]) {
+					arrayBIndex++;
+				}
+				result[cursor++] = a[arrayAIndex];
+				arrayAIndex++;
+			} else {// if (a[arrayAIndex] > b[arrayBIndex]) {
+				result[cursor++] = b[arrayBIndex];
+				arrayBIndex++;
+			}
 
-	    if (a[arrayAIndex] <= b[arrayBIndex]) {
-		if (a[arrayAIndex] == b[arrayBIndex]) {
-		    arrayBIndex++;
 		}
-		result[cursor++] = a[arrayAIndex];
-		arrayAIndex++;
-	    } else {// if (a[arrayAIndex] > b[arrayBIndex]) {
-		result[cursor++] = b[arrayBIndex];
-		arrayBIndex++;
-	    }
 
+		if (arrayAIndex < a.length) {
+
+			while (arrayAIndex < a.length) {
+				result[cursor++] = a[arrayAIndex++];
+
+			}
+		} else { // if (arrayBIndex < b.length) {
+			while (arrayBIndex < b.length) {
+				result[cursor++] = b[arrayBIndex++];
+			}
+
+		}
+		return result;
 	}
-
-	if (arrayAIndex < a.length) {
-
-	    while (arrayAIndex < a.length) {
-		result[cursor++] = a[arrayAIndex++];
-
-	    }
-	} else { // if (arrayBIndex < b.length) {
-	    while (arrayBIndex < b.length) {
-		result[cursor++] = b[arrayBIndex++];
-	    }
-
-	}
-	return result;
-    }
 
 }

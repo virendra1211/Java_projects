@@ -57,6 +57,9 @@ public class StreamBestInterviewQuestion {
 
 		System.out.println(mapWithPrice);
 
+		Map<String, Double> mapWithPrice1 = items.stream().collect(Collectors.groupingBy(
+				Item::getName, Collectors.averagingDouble(p -> p.getPrice().doubleValue())));
+		System.out.println("averagging double" + mapWithPrice1);
 	}
 
 	static class NameQtyKey {

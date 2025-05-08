@@ -9,20 +9,21 @@ import java.util.concurrent.TimeUnit;
  */
 public class CompletableFutureTimeOut {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-	CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
-	    try {
-		Thread.sleep(1000);
-	    } catch (InterruptedException te) {
-	    }
-	    return "Task Completed";
-	});
+		CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException te) {
+			}
+			return "Task Completed";
+		});
 
-	CompletableFuture<String> timeOut = completableFuture.completeOnTimeout("TimeOut", 1001, TimeUnit.MILLISECONDS);
-	String result = timeOut.join();
-	System.out.println("Result " + result);
+		CompletableFuture<String> timeOut = completableFuture.completeOnTimeout("TimeOut", 1001,
+				TimeUnit.MILLISECONDS);
+		String result = timeOut.join();
+		System.out.println("Result " + result);
 
-    }
+	}
 
 }

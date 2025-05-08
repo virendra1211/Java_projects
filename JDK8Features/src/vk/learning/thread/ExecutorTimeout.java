@@ -15,29 +15,29 @@ import java.util.concurrent.TimeoutException;
  */
 public class ExecutorTimeout {
 
-    public static void main(String[] args) {
-	ExecutorService executor = Executors.newFixedThreadPool(2);
-	Future<String> future = executor.submit(() -> {
-	    try {
-		Thread.sleep(1000);
-	    } catch (Exception exeption) {
-		System.out.println("exception ");
-	    }
-	    return "Task Complete";
-	});
+	public static void main(String[] args) {
+		ExecutorService executor = Executors.newFixedThreadPool(2);
+		Future<String> future = executor.submit(() -> {
+			try {
+				Thread.sleep(1000);
+			} catch (Exception exeption) {
+				System.out.println("exception ");
+			}
+			return "Task Complete";
+		});
 
-	try {
-	    String result = future.get(5, TimeUnit.MILLISECONDS);
-	    System.out.println("result " + result);
-	} catch (TimeoutException e) {
-	    System.out.println("Task Execution timeout !");
-	    future.cancel(true); // manuall interrupt the task
-	} catch (Exception e) {
-	} finally {
-	    executor.shutdown();
+		try {
+			String result = future.get(5, TimeUnit.MILLISECONDS);
+			System.out.println("result " + result);
+		} catch (TimeoutException e) {
+			System.out.println("Task Execution timeout !");
+			future.cancel(true); // manuall interrupt the task
+		} catch (Exception e) {
+		} finally {
+			executor.shutdown();
+		}
+
 	}
-
-    }
 
 }
 /*
