@@ -6,7 +6,7 @@ import java.util.Deque;
 public class FormulaVerify {
 
 	public static void main(String[] args) {
-		String str = "[{}{()}]";
+		String str = "[2{}{()}]";
 		// str = "(9*8)+(1-2)-[7/2]";
 		// String str= "{{level 1 { sub} {sub2}}}";
 		if (isValidate(str)) {
@@ -17,7 +17,7 @@ public class FormulaVerify {
 	}
 
 	private static boolean isValidate(String str) {
-		Deque<Character> deque = new ArrayDeque<>();
+		Deque<Character> deque = new ArrayDeque<>(); // LIFO, last in first out
 		for (int i = 0; i < str.length(); i++) {
 			Character ch = str.charAt(i);
 			if (ch == '(' || ch == '[' || ch == '{') {

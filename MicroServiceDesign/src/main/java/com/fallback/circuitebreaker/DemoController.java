@@ -12,19 +12,19 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 @RequestMapping("/api")
 public class DemoController {
 
-    @GetMapping("/data")
-    @CircuitBreaker(name = "myCircuitBreaker", fallbackMethod = "fallbackData")
-    public String getData() {
-	// Simulate call to external service
-	if (new Random().nextInt(10) < 7) { // simulate failure 70% of the time
-	    throw new RuntimeException("Service failed!");
+	@GetMapping("/data")
+	@CircuitBreaker(name = "myCircuitBreaker", fallbackMethod = "fallbackData")
+	public String getData() {
+		// Simulate call to external service
+		if (new Random().nextInt(10) < 7) { // simulate failure 70% of the time
+			throw new RuntimeException("Service failed!");
+		}
+
+		return "Successful Response!";
 	}
 
-	return "Successful Response!";
-    }
-
-    // Fallback method when exception or timeout occurs
-    public String fallbackData(Throwable t) {
-	return "Fallback response due to: " + t.getMessage();
-    }
+	// Fallback method when exception or timeout occurs
+	public String fallbackData(Throwable t) {
+		return "Fallback response due to: " + t.getMessage();
+	}
 }

@@ -1,0 +1,111 @@
+1. E-Commerce: Product Details API
+Scenario: Build a /product/{id} API that shows all details for a product:
+
+ProductService: basic info (name, price, description)
+
+InventoryService: stock availability
+
+ReviewService: average rating and reviews
+
+java
+Copy
+Edit
+CompletableFuture<Product> productFuture = ...
+CompletableFuture<Inventory> inventoryFuture = ...
+CompletableFuture<Reviews> reviewsFuture = ...
+
+return productFuture
+    .thenCombine(inventoryFuture, ProductWithStock::new)
+    .thenCombine(reviewsFuture, ProductFullDetails::new)
+    .join();
+Why this matters: Used in storefronts (Amazon, Flipkart) to optimize user experience by reducing page load latency.
+
+***************************
+2. Banking: Account Summary
+Scenario: Display full account summary to a logged-in user:
+
+AccountService: balances and account numbers
+
+TransactionService: recent transactions
+
+RewardService: reward points, cashback
+
+java
+Copy
+Edit
+CompletableFuture<AccountInfo> account = ...
+CompletableFuture<List<Transaction>> transactions = ...
+CompletableFuture<RewardInfo> rewards = ...
+
+return CompletableFuture.allOf(account, transactions, rewards)
+    .thenApply(v -> new AccountSummary(account.join(), transactions.join(), rewards.join()));
+Why this matters: Financial dashboards must be responsive and accurate, aggregating multiple systems in real time.
+
+***************************
+ 3. Travel Booking: Flight Info Aggregator
+Scenario: Search engine for flights:
+
+FlightService: flight schedules
+
+PricingService: real-time prices
+
+LoyaltyService: miles/points earned
+
+java
+Copy
+Edit
+CompletableFuture<FlightDetails> flight = ...
+CompletableFuture<Price> price = ...
+CompletableFuture<Loyalty> loyalty = ...
+
+return flight.thenCombine(price, FlightWithPrice::new)
+             .thenCombine(loyalty, FullFlightResult::new)
+             .join();
+Why this matters: Travel apps (Skyscanner, Expedia) must deliver rich, real-time search results by parallelizing remote API calls.
+***************************
+4. Healthcare: Patient Dashboard
+Scenario: Doctor views a patient summary:
+
+PatientProfileService: demographics
+
+MedicalHistoryService: prior conditions
+
+LabResultsService: latest test results
+
+java
+Copy
+Edit
+CompletableFuture<PatientProfile> profile = ...
+CompletableFuture<History> history = ...
+CompletableFuture<LabResults> labs = ...
+
+return CompletableFuture.allOf(profile, history, labs)
+    .thenApply(v -> new PatientSummary(profile.join(), history.join(), labs.join()));
+Why this matters: In clinical settings, quick decision-making depends on aggregating diverse, siloed medical data.
+***************************
+5. Ride Sharing App: Trip Details API
+Scenario: /trip/{id} gives full trip breakdown:
+
+TripService: driver, route, duration
+
+PaymentService: cost, payment status
+
+RatingService: feedback
+
+Same pattern applies.
+***************************
+Takeaway Patterns:
+thenCombine for merging two related results.
+
+allOf + join() for many parallel tasks.
+
+Ideal for microservice aggregation, API Gateway, GraphQL Resolvers, etc.
+
+Want one of these coded fully in Spring Boot or with WebClient/Reactive stack?
+
+
+****************** IMPORTANT TIPS *************************
+- allOf + join() for many parallel tasK
+- thenCompose() is useful to chain two dependent CompletableFuture instances
+- thenCombine() is useful to chain two independent instances of CompletableFuture .
+- 

@@ -2,6 +2,7 @@ package org.design.pattern;
 
 public class Test {
 	public static void main(String[] args) {
+
 		String str = "aabcccccaaa";
 		// a2blc5a3
 		// string+occurences
@@ -19,10 +20,10 @@ public class Test {
 				sb.append(String.valueOf(temp) + count);
 				temp = c;
 				count = 1;
-			} 
-			if(i+1 == a.length) {
+			}
+			if (i + 1 == a.length) {
 				sb.append(String.valueOf(temp) + count);
-			} 
+			}
 		}
 		System.out.println(sb);
 	}

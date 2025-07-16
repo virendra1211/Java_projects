@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -56,7 +57,12 @@ public class UserController {
 		HttpStatus status = isUpdate ? HttpStatus.OK : HttpStatus.CREATED;
 		String message = isUpdate ? "User updated successfully" : "User created successfully";
 
-		return ResponseEntity.status(status).body(Map.of("message", message, "user", savedUser));
+		HttpHeaders header = new HttpHeaders();
+		header.add("custom-header", "Custom Value");
+
+		// headers we can add custom header
+		return ResponseEntity.status(status).header("custom-header", "Custom Value")
+				.body(Map.of("message", message, "user", savedUser));
 	}
 
 	// DELETE User

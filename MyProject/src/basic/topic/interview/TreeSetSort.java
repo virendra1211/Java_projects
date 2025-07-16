@@ -1,6 +1,5 @@
 package basic.topic.interview;
 
-import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -10,7 +9,7 @@ public class TreeSetSort {
 	public static void main(String[] args) {
 		for (int i = 1; i <= 10; i++) {
 			for (int j = 0; j < i; j++) {
-				System.out.print(j + i+" ");
+				System.out.print(j + i + " ");
 			}
 			System.out.println();
 

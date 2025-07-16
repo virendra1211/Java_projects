@@ -14,6 +14,7 @@ public class LRUCache {
 	private final ScheduledExecutorService executor;
 
 	public LRUCache() {
+
 		executor = Executors.newScheduledThreadPool(1);
 
 		// Schedule cleanup task every 15 minute
@@ -70,12 +71,16 @@ public class LRUCache {
 		return System.currentTimeMillis() - node.timestamp >= EXPIRY_TIME;
 	}
 
+// 1 ,2 ,3 ,4 
+// 5 , 1 ,2 , ,4 
+	// 4 , 5 ,1 ,2 ,3
 	private void moveToHead(Node node) {
 		removeNode(node);
 		addNodeToHead(node);
 	}
 
 	private void removeNode(Node node) {
+		// 1 , 2 ,3 ,4
 		if (node.prev != null)
 			node.prev.next = node.next;
 		else
@@ -90,7 +95,7 @@ public class LRUCache {
 	private void addNodeToHead(Node node) {
 		node.next = head;
 		node.prev = null;
-
+// 1 ,2 ,3 
 		if (head != null)
 			head.prev = node;
 		head = node;
@@ -105,6 +110,7 @@ public class LRUCache {
 			map.remove(current.key);
 			removeNode(current);
 			current = tail;
+			//
 		}
 	}
 

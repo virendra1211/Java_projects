@@ -1,6 +1,7 @@
 package vk.learning.important.interview;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,19 @@ public class ObjectFieldValueIncrementPeek {
 			e.setSalary(e.getSalary() + 19);
 		}).collect(Collectors.toList());
 
+		String[] str = { "Newa York", "Newb Jersey", "New Town" };
+		Arrays.sort(str);
+		System.out.println(Arrays.toString(str));
+		List<String> ress = Arrays.asList(str).stream()
+				.sorted(Comparator.comparing(g -> g.toString().split(" ")[1]))
+				.collect(Collectors.toList());
+
+		System.out.println("ressss " + ress);
 		enggListOutput.forEach(System.out::println);
+		/*
+		 * List<Employees> employeeList = Arrays.asList(arrayOfEngg).stream()
+		 * .map(employee -> employee.getSalary() + 1000).collect(Collectors.toList());
+		 */
 
 	}
 

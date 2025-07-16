@@ -11,11 +11,11 @@ public class ExtractValueFromObjectStream {
 		List<Person> people = Arrays.asList(new Person("Alice", "Marie", "Smith", null),
 				new Person("Bob", null, "Jones", Gender.MALE),
 				new Person("Clara", null, "White", Gender.FEMALE),
-				new Person("Diana", "Rose", "Brown", Gender.FEMALE));
+				new Person("Diana", "Rose ", "Brown", Gender.FEMALE));
 
 		List<String> middleNames = people.stream().filter(p -> p.getGender() == Gender.FEMALE)
-				.map(Person::getMiddleName).filter(Objects::nonNull).map(String::toUpperCase)
-				.collect(Collectors.toList());
+				.map(Person::getMiddleName).filter(Objects::nonNull).map(String::trim)
+				.map(String::toUpperCase).collect(Collectors.toList());
 		System.out.println(middleNames);
 
 	}
@@ -71,6 +71,6 @@ class Person {
 
 }
 
-public enum Gender {
+enum Gender {
 	MALE, FEMALE, OTHER
 }

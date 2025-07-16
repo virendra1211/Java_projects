@@ -1,5 +1,8 @@
 package vk.learning.algo;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class CustomDequeue<E> {
 
 	Node<E> head;
@@ -67,6 +70,11 @@ public class CustomDequeue<E> {
 
 		System.out.println(deque.popFirst()); // 20
 		System.out.println(deque.pullFirst()); // 10
+
+		String multilineString = "Baeldung helps \n \n developers \n explore Java.";
+		List<String> lines = multilineString.lines().filter(line -> !line.isBlank())
+				.map(String::strip).collect(Collectors.toList());
+		System.out.println(lines);
 	}
 
 }

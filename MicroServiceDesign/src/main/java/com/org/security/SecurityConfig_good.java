@@ -10,13 +10,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+// spring 3.x versio
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig_good {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable()) // 1
+		http.csrf(csrf -> csrf.disable()) // 1 // used csutomizer
 				.authorizeHttpRequests(auth -> auth // 2
 						.requestMatchers("/auth/**").permitAll() // 3
 						.requestMatchers("/admin/**").hasRole("ADMIN") // 4

@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class MergeArray {
 
 	public static void main(String[] args) {
-		int[] A = { 1, 4, 7, 19, 23 };
+		int[] A = { 1, 4, 7, 19, 23, 51 };
 		int[] B = { 2, 7, 16, 51, 67 };
 		/*
 		 * int[] A = { 1, 2, 3, 0, 0, 0 }; int[] B = { 2, 5, 6 };
@@ -26,14 +26,14 @@ public class MergeArray {
 	private static int[] mergeArrays(int[] a, int[] b) {
 		int[] result = new int[a.length + b.length];
 		int cursor = 0;
-
+		int duplicateCounter = 0;
 		int arrayAIndex = 0;
 		int arrayBIndex = 0;
 		while (arrayAIndex < a.length && arrayBIndex < b.length) {
-
 			if (a[arrayAIndex] <= b[arrayBIndex]) {
 				if (a[arrayAIndex] == b[arrayBIndex]) {
 					arrayBIndex++;
+					duplicateCounter++;
 				}
 				result[cursor++] = a[arrayAIndex];
 				arrayAIndex++;
@@ -56,7 +56,9 @@ public class MergeArray {
 			}
 
 		}
-		return result;
+		System.out.println(duplicateCounter);
+
+		return Arrays.copyOfRange(result, 0, result.length - duplicateCounter);
 	}
 
 }

@@ -8,7 +8,7 @@ import com.org.model.User;
 
 public interface CustomerRepository extends CrudRepository<User, Long> {
 
-    List<User> findByLastName(String lastName);
+	List<User> findByLastName(String lastName);
 
-    User findById(long id);
+	User findById(long id);
 }

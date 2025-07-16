@@ -1,8 +1,7 @@
 package virendra.interview.visitor.pattern.example2.items;
 
-import virendra.interview.visitor.pattern.example2.ShopVisitor;
 
-public class Electronics implements ShopItem {
+public class Electronics implements org.trishinfotech.visitor.example2.items.ShopItem {
 
 	private String brand;
 	private double price;

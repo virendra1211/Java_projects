@@ -29,6 +29,11 @@ public class ThreeMostFrquentWords {
 		Map<Integer, Long> result = Arrays.stream(p).boxed()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		System.out.println(result);
+
+		String str = "abcedgabdg";
+		Map<Integer, Long> result1 = str.chars().boxed()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
 	}
 
 }

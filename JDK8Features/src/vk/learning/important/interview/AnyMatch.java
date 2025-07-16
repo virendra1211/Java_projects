@@ -15,6 +15,15 @@ public class AnyMatch {
 
 		found.ifPresent(p -> System.out.println(p));
 
+		String str = "abc3ded5";
+		int sum = str.chars() // Stream of int (ASCII)
+				.filter(Character::isDigit) // keep only digits
+				.map(Character::getNumericValue)
+				// .map(c -> c - '0') // convert char digit to number
+				.sum(); // sum them
+
+		System.out.println("Sum of digits: " + sum); // Output: 8
+
 	}
 
 }

@@ -33,7 +33,7 @@ public class MapComputeIfAbsent {
 		Map<Character, List<Integer>> frequencyMap = new HashMap<>();
 
 		Map<Character, Long> result = input.chars().mapToObj(c -> (char) c)
-				.map(Character::toUpperCase)
+				.map(Character::toUpperCase).filter(null)
 				.collect(Collectors.groupingBy(c -> c, Collectors.counting()));
 		System.out.println(result);
 
@@ -45,7 +45,9 @@ public class MapComputeIfAbsent {
 		});
 
 		System.out.println(charIndices);
-
+		for (Map.Entry<Character, List<Integer>> me : charIndices.entrySet()) {
+			System.out.println(me.getKey() + " = " + me.getValue().size());
+		}
 	}
 
 	private static final Map<String, List<String>> citiesInCountry = new HashMap<>();

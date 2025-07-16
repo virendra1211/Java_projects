@@ -1,7 +1,8 @@
 package basic.topic.interview;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
-import java.lang.Math;
 
 public class ArmstsrongNumberExample {
 //function to check if the number is Armstrong or not  
@@ -32,15 +33,15 @@ public class ArmstsrongNumberExample {
 			return false;
 	}
 
-
 //driver code  
 	public static void main(String args[]) {
 		int num;
+		Map map = new HashMap();
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the limit: ");
 //reads the limit from the user  
 		num = sc.nextInt();
-		isArmstrong(153);
+		System.out.println(isArmstrong(153));
 		System.out.println("Armstrong Number up to " + num + " are: ");
 		for (int i = 0; i <= num; i++)
 //function calling  

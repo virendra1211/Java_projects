@@ -1,5 +1,6 @@
 package com.org.security;
 
+import org.bouncycastle.jcajce.BCFKSLoadStoreParameter.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class JWTUtil {
 
 	private String SECRET_KEY = "mysecret";
+	private final long expirationMs = 3600000; // 1 hour
 
 	public String extractUsername(String token) {
 		return extractClaim(token, Claims::getSubject);
@@ -26,7 +28,8 @@ public class JWTUtil {
 		return (username.equals(userDetails.getUsername()));
 	}
 
-	public String generateToken(UserDetails userDetails) {
+	public String generateToken(UserDetails userDetails) { // jwts will generate token, secrete from
+															// AWS secret.
 		return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
 				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10
 																							// hours
