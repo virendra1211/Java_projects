@@ -1,4 +1,4 @@
-package vk.learning.array;
+package vk.learning.array.tough.interview;
 
 import java.util.Arrays;
 

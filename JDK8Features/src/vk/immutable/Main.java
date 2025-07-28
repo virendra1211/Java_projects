@@ -9,6 +9,16 @@ import java.util.stream.Collectors;
 
 public class Main {
 	public static void main(String[] args) {
+		ArrayList<Integer> list = new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		for (int i = 0; i < 5; i++) {
+			list.remove(5);
+			System.out.println("Internal size " + list.size());
+		}
+		System.out.println("after " + list.size());
 
 		final int x;
 		x = 10;

@@ -1,11 +1,9 @@
 package org.ask.interview.coding;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
 /**
  * 
@@ -19,19 +17,26 @@ import java.util.List;
  */
 public class ImmutableClass {
 	public static void main(String[] args) {
-
-		List<String> alphaList = Arrays.asList("a", "b", "c", "d");
-		List<String> aList = Collections.unmodifiableList(alphaList);
-		alphaList.add("e");
-		System.out.println("alphaList- " + alphaList);
-		aList.add("f");
-
+		checkCustomImmutableClass();
+		/*
+		 * List<String> alphaList = Arrays.asList("a", "b", "c", "d"); List<String>
+		 * aList = Collections.unmodifiableList(alphaList); alphaList.add("e");
+		 * System.out.println("alphaList- " + alphaList); aList.add("f");
+		 */
 		/*
 		 * List<String> alphaList = List.of("a", "b", "c", "d");
 		 * System.out.println("alphaList- " + alphaList); // raises error
 		 * alphaList.add("e");
 		 */
 
+	}
+
+	private static void checkCustomImmutableClass() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("a1", "abc");
+		MyFinalClass obj = new MyFinalClass(1, "name", map, new Date());
+		obj.getTestMap().put("a1", "abc1");
+		System.out.println(obj.getTestMap().get("a1"));
 	}
 
 }
@@ -56,19 +61,19 @@ final class MyFinalClass {
 	 * 
 	 * @param i
 	 * @param n
-	 * @param hm
+	 * @param map
 	 */
 
-	public MyFinalClass(int i, String n, HashMap<String, String> hm, Date birthDate) {
+	public MyFinalClass(int i, String n, Map<String, String> map, Date birthDate) {
 		System.out.println("Performing Deep Copy for Object initialization");
 		this.id = i;
 		this.name = n;
 		HashMap<String, String> tempMap = new HashMap<String, String>();
 		String key;
-		Iterator<String> it = hm.keySet().iterator();
+		Iterator<String> it = map.keySet().iterator();
 		while (it.hasNext()) {
 			key = it.next();
-			tempMap.put(key, hm.get(key));
+			tempMap.put(key, map.get(key));
 		}
 		this.testMap = tempMap;
 		this.birthDate = birthDate;

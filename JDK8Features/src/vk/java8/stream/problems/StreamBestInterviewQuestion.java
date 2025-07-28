@@ -68,6 +68,7 @@ public class StreamBestInterviewQuestion {
 
 	public static void main(String[] args) {
 		takeTansaction();
+		otherWay();
 		List<Item> items = Arrays.asList(new Item("apple", 10, new BigDecimal("9.99")),
 				new Item("banana", 20, new BigDecimal("19.99")),
 				new Item("orang", 10, new BigDecimal("29.99")),
@@ -83,9 +84,10 @@ public class StreamBestInterviewQuestion {
 					BigDecimal totalPrice = itemList.stream()
 							.map(i -> i.getPrice().multiply(BigDecimal.valueOf(i.getQuantity())))
 							.reduce(BigDecimal.ZERO, BigDecimal::add);
-
 					return totalQty + " : " + totalPrice;
 				})));
+
+		System.out.println("Result " + summary);
 
 		Map<String, List<Item>> itemsMap = items.stream()
 				.collect(Collectors.groupingBy(Item::getName));
@@ -109,7 +111,7 @@ public class StreamBestInterviewQuestion {
 
 		Map<BigDecimal, Set<Item>> mapWithPrice = items.stream().collect(
 				Collectors.groupingBy(Item::getPrice, Collectors.toCollection(HashSet::new)));
-		System.out.println(mapWithPrice);
+		System.out.println(">>> " + mapWithPrice);
 
 		// Question 4 - How will you group by name & qty both
 		Map<NameQtyKey, List<Item>> grouped = items.stream().collect(
@@ -128,6 +130,15 @@ public class StreamBestInterviewQuestion {
 		System.out.println("averagging double" + mapWithPrice1);
 
 		System.out.println(" =================== ");
+
+	}
+
+	private static void otherWay() {
+		List<Item1> list = Arrays.asList(new Item1("Apple", 10, 20), new Item1("Apple", 5, 12),
+				new Item1("banana", 2, 5));
+		Map<String, Integer> result = list.stream().collect(Collectors.groupingBy(Item1::getName,
+				Collectors.summingInt(p -> p.getPrice() * p.getQtry())));
+		System.out.println(result);
 
 	}
 
@@ -256,4 +267,42 @@ class TransactionGroup {
 		return type;
 	}
 
+}
+
+class Item1 {
+	String name;
+
+	public Item1(String name, int qtry, int price) {
+		super();
+		this.name = name;
+		this.qtry = qtry;
+		this.price = price;
+	}
+
+	int qtry;
+	int price;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getQtry() {
+		return qtry;
+	}
+
+	public void setQtry(int qtry) {
+		this.qtry = qtry;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 }

@@ -38,10 +38,11 @@ public class LongestPalindrome {
 			}
 
 			// get longest palindrome for even length (center is i, i+1)
-			tmp = checkForEquality(s, i, i + 1);
-			if (tmp.length() > longest.length()) {
-				longest = tmp;
-			}
+			/*
+			 * tmp = checkForEquality(s, i, i + 1); if (tmp.length() > longest.length()) {
+			 * longest = tmp; }
+			 */
+
 		}
 		return longest;
 	}
