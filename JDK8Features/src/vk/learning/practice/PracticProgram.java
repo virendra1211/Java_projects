@@ -2,6 +2,17 @@ package vk.learning.practice;
 
 public class PracticProgram {
 	public static void main(String[] args) {
+		Boolean isBoolean = null;
+
+		if (Boolean.TRUE.equals(isBoolean)) {
+			System.out.println("Safe check, won't throw NPE.");
+		}
+
+		/*
+		 * if (isBoolean) { // <-- will throw NullPointerException
+		 * System.out.println("This will crash."); }
+		 */
+
 		// Problem: Find the Missing Number
 		int arr[] = { 1, 2, 4, 5, 6 };
 		System.out.println("missing Approach # " + missingNumber(arr));

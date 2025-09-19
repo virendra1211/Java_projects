@@ -10,9 +10,15 @@ public class MaxSumSubarrayVariableLength {
 		 * {100, 4, 200, 1, 3, 2}; // 4 int[] input3 = {-1, -2, -3, 0, 1}; // 5 ```
 		 * 
 		 */
-
+		int p[] = { 2, 5, -5, 1, -6, 4, 2 };
+		int p1[] = { 2, 5, -5, 6, 7, 1, 1, -6, 4, 2 };
 		System.out.println("\nOutput 2:");
+		findMaxSumSubarray(arr1);
 		findMaxSumSubarray(arr2);
+		findMaxSumSubarray(p1);
+		int[] input = { -1, 2, -1, 3, -2, 4 };
+		findMaxSumSubarray(input);
+
 	}
 
 	public static void findMaxSumSubarray(int[] arr) {

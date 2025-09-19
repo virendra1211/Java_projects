@@ -13,7 +13,7 @@ public class CompletableFutureTimeOut {
 
 		CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
 			try {
-				Thread.sleep(10020);
+				Thread.sleep(10001);
 				System.out.println("999999");
 			} catch (InterruptedException te) {
 			}

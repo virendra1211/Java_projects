@@ -16,7 +16,6 @@ public class LRUCache {
 	public LRUCache() {
 
 		executor = Executors.newScheduledThreadPool(1);
-
 		// Schedule cleanup task every 15 minute
 		executor.scheduleAtFixedRate(() -> cleanUpExpiredEntries(), 15, 15, TimeUnit.MINUTES);
 	}

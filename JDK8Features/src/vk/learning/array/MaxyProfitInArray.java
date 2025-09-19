@@ -13,7 +13,7 @@ public class MaxyProfitInArray {
 		int[] prices11 = { 1, 3, 2, 8, 4, 9 };
 		int fee = 2;
 		totalProfitByAddingTransactionfee(prices11, fee);
-		System.out.println("Max Profit: " + totalProfitByAddingTransactionfee(prices11, fee)); // Output:
+		System.out.println("Max Profit$: " + totalProfitByAddingTransactionfee(prices11, fee)); // Output:
 																								// 8
 
 	}
@@ -79,7 +79,6 @@ public class MaxyProfitInArray {
 			} else if ((price - minPrice) > maxProfit) {
 				maxProfit = price - minPrice;
 			}
-
 		}
 
 		return maxProfit;

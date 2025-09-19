@@ -12,6 +12,8 @@ public class ArrayCombinationSumTarget {
 
 	public static int[] getTargetSum(int[] arr, int target) {
 		Map<Integer, Integer> map = new WeakHashMap<>();
+		List<int[]> array = new ArrayList<>();
+		int[] pair3 = new int[2];
 
 		for (int i = 0; i < arr.length; i++) {
 			int pair = target - arr[i];
@@ -52,7 +54,10 @@ public class ArrayCombinationSumTarget {
 
 		System.out.println(" ------------------- ");
 		List<ArrayList<Integer>> result1 = new ArrayList<>();
-		finCombination(arr, target, new ArrayList<Integer>(), result1, 0);
+		int amount = 18;
+		int[] coins = { 1, 5, 7, 9 };
+
+		finCombination(coins, amount, new ArrayList<Integer>(), result1, 0);
 		for (List<Integer> list : result1) {
 			System.out.println(list);
 		}

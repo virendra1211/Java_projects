@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class ConvertToMapByUser {
 
 	public static void main(String[] args) {
+
 		List<User> users = Arrays.asList(new User(1, "Alice"), new User(2, "Bob"),
 				new User(3, "Charlie"), new User(2, "David") // Duplicate ID
 		);

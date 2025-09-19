@@ -3,6 +3,7 @@ package vk.learning.verion.feature;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class Java9Feature implements I {
 
@@ -11,6 +12,8 @@ public class Java9Feature implements I {
 		I in = new Java9Feature();
 		in.div(8, 2);
 		in.add(3, 1);
+		var p = new ArrayList<Integer>();
+
 		// II try-with-resource
 		try (PrintWriter writer = new PrintWriter(new File("text.txt"))) {
 			writer.println();
@@ -21,8 +24,8 @@ public class Java9Feature implements I {
 		// V Introduced Factory Methods like List.of, Map.of
 	}
 
-	@Override
 	public void div(int a, int b) {
+		// TODO Auto-generated method stub
 
 	}
 

@@ -5,19 +5,41 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
+	public static String describeObject(Object obj) {
+		return switch (obj) {
+		case null -> "The object is null."; // Handles null explicitly
+		case String s -> "This is a String: " + s.toUpperCase(); // Matches String objects
+		case Integer i -> "This is an Integer: " + i * 2; // Matches Integer objects
+		case Double d -> "This is a Double: " + d;
+		default -> "This is an unknown type."; // Catches any other object type
+		};
+	}
+
+	public static void switchTest() {
+		System.out.println(describeObject("hello world")); // Output: This is a String: HELLO WORLD
+		System.out.println(describeObject(10)); // Output: This is an Integer: 20
+		System.out.println(describeObject(3.14)); // Output: This is a Double: 3.14
+		System.out.println(describeObject(null)); // Output: The object is null.
+		System.out.println(describeObject(new Object())); // Output: This is an unknown type.
+	}
+
 	public static void main(String[] args) {
+		switchTest();
 		ArrayList<Integer> list = new ArrayList<>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
 		list.add(4);
 		for (int i = 0; i < 5; i++) {
-			list.remove(5);
+			// list.remove(5);
 			System.out.println("Internal size " + list.size());
 		}
+
+		list.stream().map(Function.identity()).forEach(System.out::println);
 		System.out.println("after " + list.size());
 
 		final int x;
@@ -41,7 +63,7 @@ public class Main {
 		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 		List<Integer> result = numbers.stream().filter(p -> p % 2 == 0).map(p -> p * p)
 				.collect(Collectors.toList());
-
+		Collectors.toMap(null, null)
 		System.out.println(result);
 
 		List<Address> addressList = new ArrayList<>();

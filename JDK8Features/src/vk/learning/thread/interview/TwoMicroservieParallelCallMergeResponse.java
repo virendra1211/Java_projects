@@ -33,8 +33,8 @@ public class TwoMicroservieParallelCallMergeResponse {
 				.supplyAsync(() -> experienceService.getExperience(employeeId), executor);
 
 		// Combine results after both complete
-		CompletableFuture<EmployeeFullInfo> combinedFuture = profileFuture
-				.thenCombine(experienceFuture, EmployeeFullInfo::new);
+		CompletableFuture<EmployeeFullInfo> combinedFuture = profileFuture.thenCombine(experienceFuture,
+				EmployeeFullInfo::new);
 
 		// Wait and print the result
 		combinedFuture.thenAccept(fullInfo -> {
@@ -83,8 +83,8 @@ class EmployeeFullInfo {
 
 	@Override
 	public String toString() {
-		return "EmployeeFullInfo{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email
-				+ '\'' + ", experiences=" + experiences + '}';
+		return "EmployeeFullInfo{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\''
+				+ ", experiences=" + experiences + '}';
 	}
 }
 

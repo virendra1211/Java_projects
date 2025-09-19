@@ -9,8 +9,7 @@ import java.util.stream.Collectors;
 public class ThreeMostFrquentWords {
 
 	public static void main(String[] args) {
-		List<String> words = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple",
-				"mango");
+		List<String> words = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple", "mango");
 
 		Map<String, Long> freqMap = words.stream()
 				.collect(Collectors.groupingBy(w -> w, Collectors.counting()));
@@ -22,8 +21,7 @@ public class ThreeMostFrquentWords {
 		freqMap.entrySet().stream().sorted(Map.Entry.comparingByValue()).limit(3)
 				.collect(Collectors.toList());
 
-		top3.forEach(entry -> System.out
-				.println("Word: " + entry.getKey() + ", Count: " + entry.getValue()));
+		top3.forEach(entry -> System.out.println("Word: " + entry.getKey() + ", Count: " + entry.getValue()));
 
 		int p[] = { 3, 5, 6, 3, 7, 8, 9, 2, 3, 6, 9, 10 };
 		Map<Integer, Long> result = Arrays.stream(p).boxed()
@@ -31,8 +29,10 @@ public class ThreeMostFrquentWords {
 		System.out.println(result);
 
 		String str = "abcedgabdg";
-		Map<Integer, Long> result1 = str.chars().boxed()
+		Map<Character, Long> result1 = str.chars().mapToObj(c -> (char) c)
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+		System.out.println("======= " + result1);
 
 	}
 

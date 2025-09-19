@@ -18,12 +18,11 @@ public class StreamBestInterviewQuestion {
 				new Transaction("USD", "BUY", 200.0), new Transaction("USD", "SELL", 300.0),
 				new Transaction("EUR", "BUY", 150.0), new Transaction("EUR", "SELL", 250.0),
 				new Transaction("EUR", "SELL", 350.0), new Transaction("INR", "DEPOSIT", 1000.0),
-				new Transaction("INR", "WITHDRAWAL", 500.0),
-				new Transaction("INR", "DEPOSIT", 2000.0));
+				new Transaction("INR", "WITHDRAWAL", 500.0), new Transaction("INR", "DEPOSIT", 2000.0));
 
-		Map<String, Map<String, Double>> result = transactions.stream()
-				.collect(Collectors.groupingBy(Transaction::getCurrency, Collectors.groupingBy(
-						Transaction::getType, Collectors.averagingDouble(Transaction::getAmount))));
+		Map<String, Map<String, Double>> result = transactions.stream().collect(
+				Collectors.groupingBy(Transaction::getCurrency, Collectors.groupingBy(Transaction::getType,
+						Collectors.averagingDouble(Transaction::getAmount))));
 
 		for (Map.Entry<String, Map<String, Double>> currencyEntry : result.entrySet()) {
 			String currency = currencyEntry.getKey();
@@ -46,9 +45,8 @@ public class StreamBestInterviewQuestion {
 	}
 
 	static void teeingMultipleValue() {
-		List<Employee> employees = Arrays.asList(new Employee("Amit", 60000),
-				new Employee("Neha", 75000), new Employee("Ravi", 50000),
-				new Employee("Priya", 80000));
+		List<Employee> employees = Arrays.asList(new Employee("Amit", 60000), new Employee("Neha", 75000),
+				new Employee("Ravi", 50000), new Employee("Priya", 80000));
 
 		// Teeing: sum and average together
 		Map<String, Double> summary = employees.stream()
@@ -73,8 +71,7 @@ public class StreamBestInterviewQuestion {
 				new Item("banana", 20, new BigDecimal("19.99")),
 				new Item("orang", 10, new BigDecimal("29.99")),
 				new Item("watermelon", 10, new BigDecimal("29.99")),
-				new Item("papaya", 20, new BigDecimal("9.99")),
-				new Item("apple", 10, new BigDecimal("9.99")),
+				new Item("papaya", 20, new BigDecimal("9.99")), new Item("apple", 10, new BigDecimal("9.99")),
 				new Item("banana", 10, new BigDecimal("19.99")),
 				new Item("apple", 20, new BigDecimal("9.99")));
 
@@ -89,8 +86,7 @@ public class StreamBestInterviewQuestion {
 
 		System.out.println("Result " + summary);
 
-		Map<String, List<Item>> itemsMap = items.stream()
-				.collect(Collectors.groupingBy(Item::getName));
+		Map<String, List<Item>> itemsMap = items.stream().collect(Collectors.groupingBy(Item::getName));
 		System.out.println(itemsMap);
 
 		// 1 . Group by Item name and display count
@@ -98,24 +94,24 @@ public class StreamBestInterviewQuestion {
 				.collect(Collectors.groupingBy(Item::getName, Collectors.counting()));
 
 		// Extra question, quantity average cost
-		Map<String, Double> mapAverageCost = items.stream().collect(
-				Collectors.groupingBy(Item::getName, Collectors.averagingInt(Item::getQuantity)));
+		Map<String, Double> mapAverageCost = items.stream()
+				.collect(Collectors.groupingBy(Item::getName, Collectors.averagingInt(Item::getQuantity)));
 
 		System.out.println("*** " + map);
 		// 2. Group by Item name and show total Qty
-		Map<String, Integer> mapWithQuantity = items.stream().collect(
-				Collectors.groupingBy(Item::getName, Collectors.summingInt(Item::getQuantity)));
+		Map<String, Integer> mapWithQuantity = items.stream()
+				.collect(Collectors.groupingBy(Item::getName, Collectors.summingInt(Item::getQuantity)));
 		System.out.println(mapWithQuantity);
 
 		// 3. Group by Price and return result in Hashset
 
-		Map<BigDecimal, Set<Item>> mapWithPrice = items.stream().collect(
-				Collectors.groupingBy(Item::getPrice, Collectors.toCollection(HashSet::new)));
+		Map<BigDecimal, Set<Item>> mapWithPrice = items.stream()
+				.collect(Collectors.groupingBy(Item::getPrice, Collectors.toCollection(HashSet::new)));
 		System.out.println(">>> " + mapWithPrice);
 
 		// Question 4 - How will you group by name & qty both
-		Map<NameQtyKey, List<Item>> grouped = items.stream().collect(
-				Collectors.groupingBy(item -> new NameQtyKey(item.getName(), item.getQuantity())));
+		Map<NameQtyKey, List<Item>> grouped = items.stream()
+				.collect(Collectors.groupingBy(item -> new NameQtyKey(item.getName(), item.getQuantity())));
 
 		System.out.println(" =============== group by ========= ");
 		grouped.forEach((key, itemList) -> {
@@ -125,8 +121,8 @@ public class StreamBestInterviewQuestion {
 
 		System.out.println(mapWithPrice);
 
-		Map<String, Double> mapWithPrice1 = items.stream().collect(Collectors.groupingBy(
-				Item::getName, Collectors.averagingDouble(p -> p.getPrice().doubleValue())));
+		Map<String, Double> mapWithPrice1 = items.stream().collect(Collectors.groupingBy(Item::getName,
+				Collectors.averagingDouble(p -> p.getPrice().doubleValue())));
 		System.out.println("averagging double" + mapWithPrice1);
 
 		System.out.println(" =================== ");
@@ -202,8 +198,7 @@ class Item {
 	// toString
 	@Override
 	public String toString() {
-		return "Item{" + "name='" + name + '\'' + ", quantity=" + quantity + ", price=" + price
-				+ '}';
+		return "Item{" + "name='" + name + '\'' + ", quantity=" + quantity + ", price=" + price + '}';
 	}
 
 	@Override

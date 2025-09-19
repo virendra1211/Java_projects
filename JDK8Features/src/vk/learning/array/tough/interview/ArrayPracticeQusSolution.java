@@ -62,6 +62,7 @@ public class ArrayPracticeQusSolution {
 		List<String> result = listOfLists.stream().flatMap(Collection::stream)
 				.collect(Collectors.toList());
 		System.out.println(result);
+		result.stream().tol
 
 	}
 

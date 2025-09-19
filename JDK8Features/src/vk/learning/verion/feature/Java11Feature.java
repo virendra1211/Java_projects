@@ -11,8 +11,8 @@ public class Java11Feature {
 		// 1. New String method to String class like isBlank, lines, strip
 		// repeat,stripLeading, stripTailing
 		String multipleString = "Virendra helps \n \n developers \n explore Java.";
-		List<String> list = multipleString.lines().filter(lines -> !lines.isBlank())
-				.map(String::strip).collect(Collectors.toList());
+		List<String> list = multipleString.lines().filter(lines -> !lines.isBlank()).map(String::strip)
+				.collect(Collectors.toList());
 		System.out.println(list);
 
 		// 2. Collections to an Array
@@ -50,3 +50,6 @@ public class Java11Feature {
 	}
 
 }
+
+// user id and time stamp, we have to use sliding window of 10 minute, 
+// answer time complexity, 

@@ -14,6 +14,7 @@ class Result {
 	 */
 
 	public static List<Integer> mergeArrays(List<Integer> x, List<Integer> y) {
+
 		// Write your code here
 		List<Integer> mergeList = new ArrayList<>();
 		int[] a = x.stream().mapToInt(Integer::intValue).toArray();
