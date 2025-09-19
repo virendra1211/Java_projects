@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class HashMapByValueSort {
@@ -25,9 +26,8 @@ public class HashMapByValueSort {
 
 		/** I way **/
 		Map<String, Integer> sortedMapWithValue = map.entrySet().stream()
-				.sorted((p1, p2) -> p1.getValue().compareTo(p2.getValue()))
-				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (o, n) -> o,
-						LinkedHashMap::new));
+				.sorted((p1, p2) -> p1.getValue().compareTo(p2.getValue())).collect(Collectors
+						.toMap(Map.Entry::getKey, Map.Entry::getValue, (o, n) -> o, LinkedHashMap::new));
 		System.out.println("sortedMapWithValue " + sortedMapWithValue);
 
 		/** II way **/
@@ -44,6 +44,9 @@ public class HashMapByValueSort {
 						(oldvalue, newvalue) -> oldvalue, LinkedHashMap::new));
 
 		System.out.println(sortedMap);
+
+		TreeMap<String, String> customSortedMap = new TreeMap<String, String>(
+				Map.Entry.comparingByValue(Comparator.reverseOrder()));
 
 	}
 

@@ -17,13 +17,12 @@ public class StringPermutation {
 
 			// ith character of str
 			char ch = str.charAt(i);
-
 			// Rest of the string after excluding the ith character
 			String lpart = str.substring(0, i);
 			String rpart = str.substring(i + 1);
 			String ros = lpart + rpart;
 			// Recurvise call
-			// System.out.println(str);
+			System.out.println(str);
 			printPermutn(ros, ans + ch);
 		}
 	}
@@ -32,7 +31,7 @@ public class StringPermutation {
 	public static void main(String[] args) {
 		String s = "GODE";
 
-		// printPermutn(s, "");
+		printPermutn(s, "");
 		StringBuilder s1 = new StringBuilder("Java");
 		String s2 = "Love";
 		s1.append(s2);

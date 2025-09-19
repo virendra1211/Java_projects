@@ -3,7 +3,7 @@ package org.design.pattern;
 public class Test {
 	public static void main(String[] args) {
 
-		String str = "aabcccccaaa";
+		String str = "aabcccccaaag";
 		// a2blc5a3
 		// string+occurences
 		StringBuilder sb = new StringBuilder();

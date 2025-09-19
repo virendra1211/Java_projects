@@ -22,7 +22,7 @@ public class BinarySearch {
 
 		int item;
 
-		binarySearch(0, p.length - 1, 29);
+		binarySearch(0, p.length - 1, 55);
 	}
 
 	public static void binarySearch(int li, int hi, int item) {
