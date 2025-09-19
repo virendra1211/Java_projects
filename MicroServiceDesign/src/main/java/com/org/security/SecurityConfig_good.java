@@ -17,14 +17,15 @@ public class SecurityConfig_good {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable()) // 1 // used csutomizer
+		http.csrf(csrf -> csrf.disable()) // 1 // used customizer
 				.authorizeHttpRequests(auth -> auth // 2
 						.requestMatchers("/auth/**").permitAll() // 3
 						.requestMatchers("/admin/**").hasRole("ADMIN") // 4
 						.anyRequest().authenticated()// 5
 				).sessionManagement(
 						session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 6
-				).addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class); // 7
+				).addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class) // 7
+		// .userDetailsService(myCustomUserDetailService) // add customized
 		return http.build();
 	}
 

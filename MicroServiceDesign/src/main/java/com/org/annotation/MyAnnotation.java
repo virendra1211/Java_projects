@@ -41,6 +41,9 @@ class UserRequest {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	@
+	private Integer phone;
 
 	// getters and setters
 }
@@ -52,11 +55,13 @@ class UserRequest {
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 @interface NoSpecialChars {
-	String message() default "Special characters are not allowed";
+	String message()
+
+	default "Special characters are not allowed";
 
 	Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload()default{};
 }
 
 // ✅ Step 2: Create the Validator Class

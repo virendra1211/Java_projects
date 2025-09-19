@@ -24,7 +24,9 @@ public class GlobalExceptionHandler {
 		} else {
 			error.setMsg("Unexpected exception: " + exception.getLocalizedMessage());
 		}
-
+		switch(exception) {
+			case ArithmeticException -> "";
+		}
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 	}
 
